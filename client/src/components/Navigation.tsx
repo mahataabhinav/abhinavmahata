@@ -37,7 +37,7 @@ export function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium tracking-wide transition-all hover:text-primary ${
+              className={`text-sm font-medium tracking-wide transition-colors duration-150 ease-out hover:text-primary ${
                 location === link.href ? "text-white" : "text-muted-foreground"
               }`}
             >
@@ -48,7 +48,7 @@ export function Navigation() {
             href="https://github.com"
             target="_blank"
             rel="noreferrer"
-            className="px-5 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-sm font-medium transition-all hover:scale-105 active:scale-95"
+            className="px-5 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-sm font-medium transition-all duration-150 ease-out hover:scale-[1.02] active:scale-[0.98]"
           >
             GitHub
           </a>
@@ -75,7 +75,7 @@ export function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-2xl font-display font-bold hover:text-primary transition-colors"
+                  className="text-2xl font-display font-bold hover:text-primary transition-colors duration-150 ease-out"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}

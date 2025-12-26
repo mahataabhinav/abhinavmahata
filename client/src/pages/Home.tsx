@@ -33,6 +33,30 @@ export default function Home() {
           </Suspense>
         </div>
         
+        {/* Profile Info Overlay - positioned to cover Spline's built-in text */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+          className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 z-10 max-w-xs"
+        >
+          <div className="glass-panel rounded-2xl p-6 backdrop-blur-xl" data-testid="card-profile">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent mb-4 flex items-center justify-center text-2xl font-bold text-white" data-testid="avatar-initials">
+              AM
+            </div>
+            <p className="text-sm text-muted-foreground mb-1 tracking-wide" data-testid="text-portfolio-title">AI Product Leader Portfolio</p>
+            <h1 className="text-2xl md:text-3xl font-display font-bold mb-2 tracking-tight" data-testid="text-name">Abhinav Mahata</h1>
+            <p className="text-sm text-muted-foreground mb-4" data-testid="text-tagline">Building the future with AI</p>
+            <Link 
+              href="/projects"
+              className="inline-block px-5 py-2.5 rounded-full bg-white text-black text-sm font-semibold transition-all duration-150 ease-out hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98]"
+              data-testid="link-see-more"
+            >
+              See more
+            </Link>
+          </div>
+        </motion.div>
+        
         {/* Subtle edge gradients - keeping the 3D scene bright and clear */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none z-[1]" />
 
