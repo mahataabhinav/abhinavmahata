@@ -67,14 +67,23 @@
   @apply bg-secondary rounded-full hover:bg-muted-foreground/50 transition-colors;
 }
 
-/* Spline Viewer Styling */
-spline-viewer {
+/* Spline Viewer Styling - Sharp and bright rendering */
+spline-viewer,
+canvas[data-engine] {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 0;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Ensure Spline renders at full quality */
+[data-spline-id] canvas,
+.spline-watermark + canvas {
+  filter: contrast(1.05) brightness(1.1) saturate(1.1);
 }
 
 /* Utility for glassmorphism */

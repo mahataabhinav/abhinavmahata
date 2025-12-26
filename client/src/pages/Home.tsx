@@ -33,9 +33,8 @@ export default function Home() {
           </Suspense>
         </div>
         
-        {/* Vignette overlays for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50 pointer-events-none z-[1]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80 pointer-events-none z-[1]" />
+        {/* Subtle edge gradients - keeping the 3D scene bright and clear */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none z-[1]" />
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
