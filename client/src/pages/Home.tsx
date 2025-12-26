@@ -1,42 +1,41 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, ExternalLink, Github, Layers, Code, Palette, Mail } from "lucide-react";
+import { ArrowRight, ChevronDown, Github, Layers, Code, Palette, Mail } from "lucide-react";
 import { Link } from "wouter";
-import HeroScene from "@/components/HeroScene";
+import { Suspense, lazy } from 'react';
 import { Navigation } from "@/components/Navigation";
 import { ContactForm } from "@/components/ContactForm";
+
+const Spline = lazy(() => import('@splinetool/react-spline'));
+
+function SplineLoader() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-background">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
+        <p className="text-muted-foreground font-mono text-sm tracking-widest uppercase">Loading 3D Scene</p>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30">
       <Navigation />
 
-      {/* Hero Section with 3D Name */}
+      {/* Hero Section with Spline 3D */}
       <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden">
-        <HeroScene />
+        <div className="absolute inset-0 w-full h-full">
+          <Suspense fallback={<SplineLoader />}>
+            <Spline
+              scene="https://prod.spline.design/DmOvuGdkDSLzS8na/scene.splinecode"
+            />
+          </Suspense>
+        </div>
         
-        {/* CTA Buttons overlaid at bottom */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-32 left-0 right-0 z-20 flex justify-center gap-4 px-6"
-        >
-          <Link 
-            href="/projects" 
-            className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 group"
-            data-testid="link-view-work"
-          >
-            View Work
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link 
-            href="/contact" 
-            className="px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 text-white font-bold rounded-full hover:bg-white/10 transition-colors flex items-center justify-center"
-            data-testid="link-contact"
-          >
-            Contact Me
-          </Link>
-        </motion.div>
+        {/* Vignette overlays for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50 pointer-events-none z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80 pointer-events-none z-[1]" />
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
