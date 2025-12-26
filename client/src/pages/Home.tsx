@@ -46,7 +46,7 @@ export default function Home() {
             width: 'clamp(200px, 22vw, 280px)',
           }}
         >
-          <div className="bg-card/90 backdrop-blur-2xl rounded-3xl p-5 border border-white/10 shadow-2xl" data-testid="card-profile">
+          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/20 shadow-2xl" style={{ backdropFilter: 'blur(20px) saturate(180%)', WebkitBackdropFilter: 'blur(20px) saturate(180%)' }} data-testid="card-profile">
             <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent mb-3 flex items-center justify-center text-xl font-bold text-white shadow-lg" data-testid="avatar-initials">
               AM
             </div>
