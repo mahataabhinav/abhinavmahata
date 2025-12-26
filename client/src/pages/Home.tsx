@@ -40,10 +40,10 @@ export default function Home() {
           transition={{ delay: 0.5, duration: 0.4 }}
           className="absolute z-10"
           style={{
-            left: '3%',
-            top: '50%',
+            left: '2.5%',
+            top: '48%',
             transform: 'translateY(-50%)',
-            width: 'clamp(200px, 22vw, 280px)',
+            width: 'clamp(220px, 18vw, 260px)',
           }}
         >
           <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/20 shadow-2xl" style={{ backdropFilter: 'blur(20px) saturate(180%)', WebkitBackdropFilter: 'blur(20px) saturate(180%)' }} data-testid="card-profile">
