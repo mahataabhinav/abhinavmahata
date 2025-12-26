@@ -33,14 +33,16 @@ export default function Home() {
           </Suspense>
         </div>
         
-        {/* Profile Info Overlay - positioned to precisely cover Spline's built-in text panel */}
+        {/* Profile Info Overlay - fully opaque to cover Spline's built-in text panel */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.4 }}
-          className="absolute left-[20px] md:left-[40px] top-1/2 -translate-y-1/2 z-10 w-[280px] md:w-[320px]"
+          className="absolute left-4 sm:left-6 md:left-10 lg:left-12 top-1/2 -translate-y-1/2 z-10 w-[260px] sm:w-[280px] md:w-[300px] lg:w-[320px]"
         >
-          <div className="bg-card/95 backdrop-blur-2xl rounded-2xl p-6 border border-white/10 shadow-2xl" data-testid="card-profile">
+          {/* Opaque mask to fully hide Spline text */}
+          <div className="absolute -inset-4 bg-background rounded-3xl" />
+          <div className="relative bg-card rounded-2xl p-6 border border-white/10 shadow-2xl" data-testid="card-profile">
             <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent mb-4 flex items-center justify-center text-xl font-bold text-white" data-testid="avatar-initials">
               AM
             </div>
