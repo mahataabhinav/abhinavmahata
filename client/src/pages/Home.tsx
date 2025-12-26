@@ -33,19 +33,19 @@ export default function Home() {
           </Suspense>
         </div>
         
-        {/* Profile Info Overlay - positioned to cover Spline's built-in text */}
+        {/* Profile Info Overlay - positioned to precisely cover Spline's built-in text panel */}
         <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 z-10 max-w-xs"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
+          className="absolute left-[20px] md:left-[40px] top-1/2 -translate-y-1/2 z-10 w-[280px] md:w-[320px]"
         >
-          <div className="glass-panel rounded-2xl p-6 backdrop-blur-xl" data-testid="card-profile">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent mb-4 flex items-center justify-center text-2xl font-bold text-white" data-testid="avatar-initials">
+          <div className="bg-card/95 backdrop-blur-2xl rounded-2xl p-6 border border-white/10 shadow-2xl" data-testid="card-profile">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent mb-4 flex items-center justify-center text-xl font-bold text-white" data-testid="avatar-initials">
               AM
             </div>
-            <p className="text-sm text-muted-foreground mb-1 tracking-wide" data-testid="text-portfolio-title">AI Product Leader Portfolio</p>
-            <h1 className="text-2xl md:text-3xl font-display font-bold mb-2 tracking-tight" data-testid="text-name">Abhinav Mahata</h1>
+            <p className="text-xs text-muted-foreground mb-1 tracking-wide uppercase" data-testid="text-portfolio-title">AI Product Leader Portfolio</p>
+            <h1 className="text-2xl font-display font-bold mb-1 tracking-tight text-white" data-testid="text-name">Abhinav Mahata</h1>
             <p className="text-sm text-muted-foreground mb-4" data-testid="text-tagline">Building the future with AI</p>
             <Link 
               href="/projects"
