@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { insertMessageSchema } from "@shared/schema";
 import { useSendMessage } from "@/hooks/use-messages";
 import { motion } from "framer-motion";
 import { Loader2, Send } from "lucide-react";
 
 // Frontend validation schema
-const formSchema = insertMessageSchema.extend({
+const formSchema = z.object({
+  name: z.string().min(2, "Name is too short"),
   email: z.string().email("Please enter a valid email address"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
@@ -16,7 +16,7 @@ type FormData = z.infer<typeof formSchema>;
 
 export function ContactForm() {
   const { mutate, isPending } = useSendMessage();
-  
+
   const {
     register,
     handleSubmit,
@@ -33,7 +33,7 @@ export function ContactForm() {
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -41,9 +41,9 @@ export function ContactForm() {
     >
       {/* Decorative gradient blob */}
       <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition-all duration-700" />
-      
+
       <h3 className="text-2xl font-display font-bold mb-6 text-white relative z-10">Get in touch</h3>
-      
+
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 relative z-10">
         <div className="space-y-2">
           <label htmlFor="name" className="text-sm font-medium text-muted-foreground ml-1">Name</label>

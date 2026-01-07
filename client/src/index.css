@@ -1,50 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  /* Dark theme by default for this immersive portfolio */
+@theme {
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Deep Space Dark Theme */
-  --background: 240 10% 4%;       /* Almost black */
-  --foreground: 0 0% 98%;         /* White */
+  --color-background: hsl(240 10% 4%);
+  --color-foreground: hsl(0 0% 98%);
   
-  --card: 240 10% 6%;
-  --card-foreground: 0 0% 98%;
+  --color-card: hsl(240 10% 6%);
+  --color-card-foreground: hsl(0 0% 98%);
   
-  --popover: 240 10% 6%;
-  --popover-foreground: 0 0% 98%;
+  --color-popover: hsl(240 10% 6%);
+  --color-popover-foreground: hsl(0 0% 98%);
   
-  --primary: 265 89% 66%;         /* Electric Purple */
-  --primary-foreground: 0 0% 100%;
+  --color-primary: hsl(265 89% 66%);
+  --color-primary-foreground: hsl(0 0% 100%);
   
-  --secondary: 240 5% 15%;        /* Dark Gray */
-  --secondary-foreground: 0 0% 98%;
+  --color-secondary: hsl(240 5% 15%);
+  --color-secondary-foreground: hsl(0 0% 98%);
   
-  --muted: 240 5% 15%;
-  --muted-foreground: 240 5% 65%;
+  --color-muted: hsl(240 5% 15%);
+  --color-muted-foreground: hsl(240 5% 65%);
   
-  --accent: 190 90% 50%;          /* Cyan Accent */
-  --accent-foreground: 240 10% 4%;
+  --color-accent: hsl(190 90% 50%);
+  --color-accent-foreground: hsl(240 10% 4%);
   
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(0 0% 98%);
 
-  --border: 240 5% 15%;
-  --input: 240 5% 15%;
-  --ring: 265 89% 66%;
+  --color-border: hsl(240 5% 15%);
+  --color-input: hsl(240 5% 15%);
+  --color-ring: hsl(265 89% 66%);
   
   --radius: 1rem;
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--color-border);
   }
   body {
     @apply bg-background text-foreground antialiased font-body selection:bg-primary/30 selection:text-primary-foreground;

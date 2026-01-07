@@ -1,28 +1,14 @@
 import { useMutation } from "@tanstack/react-query";
-import { api, type CreateMessageInput } from "@shared/routes";
+import { createMessage } from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
+import type { InsertMessage } from "@/lib/types";
 
 export function useSendMessage() {
   const { toast } = useToast();
-  
+
   return useMutation({
-    mutationFn: async (data: CreateMessageInput) => {
-      const res = await fetch(api.messages.create.path, {
-        method: api.messages.create.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-        credentials: "include",
-      });
-      
-      if (!res.ok) {
-        if (res.status === 400) {
-          const error = api.messages.create.responses[400].parse(await res.json());
-          throw new Error(error.message);
-        }
-        throw new Error("Failed to send message");
-      }
-      
-      return api.messages.create.responses[201].parse(await res.json());
+    mutationFn: async (data: InsertMessage) => {
+      return createMessage(data);
     },
     onSuccess: () => {
       toast({
